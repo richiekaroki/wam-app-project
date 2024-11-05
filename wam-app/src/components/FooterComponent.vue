@@ -6,9 +6,17 @@
         <h4 class="text-2xl font-bold text-primary">mr.wam</h4>
         <p class="text-muted">Sign up to receive updates, news, and special offers directly in your inbox.</p>
         <form @submit.prevent="handleSubscribe" class="flex space-x-2">
-          <InputComponent type="email" placeholder="Enter your email" v-model="email" required />
+          <InputComponent
+            type="email"
+            placeholder="Enter your email"
+            v-model="email"
+            required
+            :class="{ 'border-red-500': emailError }"
+          />
           <ButtonComponent variant="primary">Subscribe</ButtonComponent>
         </form>
+        <p v-if="emailError" class="text-red-500">{{ emailError }}</p>
+        <p v-if="successMessage" class="text-green-500">{{ successMessage }}</p>
       </div>
 
       <!-- Quick Links (Center) -->
@@ -25,7 +33,15 @@
       <div class="md:col-span-4 flex flex-col gap-6 md:items-end">
         <h5 class="font-semibold mb-4 text-lg">Follow Us</h5>
         <div class="flex space-x-4 text-2xl">
-          <a v-for="(social, index) in socialMediaLinks" :key="index" :href="social.url" target="_blank" rel="noopener noreferrer" :aria-label="social.label" class="hover:text-highlight transition-colors">
+          <a
+            v-for="(social, index) in socialMediaLinks"
+            :key="index"
+            :href="social.url"
+            target="_blank"
+            rel="noopener noreferrer"
+            :aria-label="social.label"
+            class="hover:text-highlight transition-colors"
+          >
             <font-awesome-icon :icon="social.icon" />
           </a>
         </div>
@@ -49,6 +65,8 @@ export default {
   data() {
     return {
       email: '',
+      emailError: '',
+      successMessage: '',
       quickLinks: [
         { label: 'Home', path: '/' },
         { label: 'Services', path: '/services' },
@@ -72,7 +90,17 @@ export default {
   },
   methods: {
     handleSubscribe() {
-      alert(`Subscribed with email: ${this.email}`);
+      this.emailError = '';
+      this.successMessage = '';
+
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailPattern.test(this.email)) {
+        this.emailError = 'Please enter a valid email address.';
+        return;
+      }
+
+      // Simulate subscription logic (e.g., API call)
+      this.successMessage = `Subscribed with email: ${this.email}`;
       this.email = ''; // Clear the input field after submission
     },
   },
