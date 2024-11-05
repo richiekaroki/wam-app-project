@@ -8,10 +8,7 @@
 
       <!-- Centered Navigation Links for Desktop -->
       <ul class="hidden md:flex space-x-6 flex-1 justify-center" aria-label="Primary navigation">
-        <li><router-link to="/" class="hover:text-highlight">Home</router-link></li>
-        <li><router-link to="/services" class="hover:text-highlight">Services</router-link></li>
-        <li><router-link to="/work" class="hover:text-highlight">Work</router-link></li>
-        <li><router-link to="/about" class="hover:text-highlight">About</router-link></li>
+        <NavLink v-for="link in navLinks" :key="link.label" :to="link.path" :label="link.label" />
       </ul>
 
       <!-- "Let's Talk" ButtonComponent -->
@@ -41,11 +38,13 @@
         role="menu"
       >
         <ul class="flex flex-col items-center space-y-4 py-4" aria-label="Mobile primary navigation">
-          <li><router-link @click="toggleMenu" to="/" class="hover:text-highlight">Home</router-link></li>
-          <li><router-link @click="toggleMenu" to="/services" class="hover:text-highlight">Services</router-link></li>
-          <li><router-link @click="toggleMenu" to="/work" class="hover:text-highlight">Work</router-link></li>
-          <li><router-link @click="toggleMenu" to="/about" class="hover:text-highlight">About</router-link></li>
-          <li><router-link @click="toggleMenu" to="/contact" class="hover:text-highlight">Contact</router-link></li>
+          <NavLink
+            v-for="link in navLinks"
+            :key="link.label"
+            :to="link.path"
+            :label="link.label"
+            @click="toggleMenu"
+          />
         </ul>
       </div>
     </transition>
@@ -54,13 +53,21 @@
 
 <script>
 import ButtonComponent from '@/components/ButtonComponent.vue';
+import NavLink from '@/components/NavLink.vue'; // New component for navigation links
 
 export default {
   name: 'NavbarComponent',
-  components: { ButtonComponent },
+  components: { ButtonComponent, NavLink },
   data() {
     return {
       isMenuOpen: false,
+      navLinks: [
+        { label: 'Home', path: '/' },
+        { label: 'Services', path: '/services' },
+        { label: 'Work', path: '/work' },
+        { label: 'About', path: '/about' },
+        { label: 'Contact', path: '/contact' },
+      ],
     };
   },
   methods: {
