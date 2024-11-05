@@ -1,5 +1,6 @@
 <template>
   <section class="flex flex-col md:flex-row items-center py-16 bg-light">
+
     <!-- Left Side: CTA and Button -->
     <div class="flex flex-col items-center text-center md:w-1/2 md:items-start md:text-left md:pr-8">
       <h2 class="text-4xl font-semibold text-dark mb-4">
@@ -20,7 +21,7 @@
       <img
         src="../assets/images/hero-image.webp"
         alt="A representation of our services"
-        class="rounded-md w-full h-auto max-h-[80vh] object-cover"
+        class="rounded-md w-full h-auto max-h-[100vh] object-cover"
       />
     </div>
   </section>
@@ -32,9 +33,7 @@ export default {
 }
 </script>
 
-<style scoped>
-/* You can add custom styles here if needed */
-
+<style>
 /* Optional: Add responsive styles */
 @media (max-width: 640px) {
   h2 {
