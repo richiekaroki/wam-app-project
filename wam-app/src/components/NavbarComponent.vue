@@ -1,8 +1,11 @@
 <template>
-  <nav class="w-full bg-secondary text-accent py-4 fixed top-0 left-0 z-50 shadow-md" aria-label="Main navigation">
+  <nav class="navbar" aria-label="Main navigation">
     <div class="container mx-auto flex justify-between items-center px-6">
       <!-- Logo -->
-      <div class="text-2xl font-bold text-primary hover:text-highlight cursor-pointer" aria-label="Homepage logo">
+      <div
+        class="text-2xl font-bold text-primary hover:text-highlight cursor-pointer"
+        aria-label="Homepage logo"
+      >
         mr.wam
       </div>
 
@@ -37,7 +40,10 @@
         aria-label="Mobile navigation menu"
         role="menu"
       >
-        <ul class="flex flex-col items-center space-y-4 py-4" aria-label="Mobile primary navigation">
+        <ul
+          class="flex flex-col items-center space-y-4 py-4"
+          aria-label="Mobile primary navigation"
+        >
           <NavLink
             v-for="link in navLinks"
             :key="link.label"
@@ -52,8 +58,8 @@
 </template>
 
 <script>
-import ButtonComponent from '@/components/ButtonComponent.vue';
-import NavLink from '@/components/NavLink.vue'; // New component for navigation links
+import ButtonComponent from '@/components/ButtonComponent.vue'
+import NavLink from '@/components/NavLink.vue'
 
 export default {
   name: 'NavbarComponent',
@@ -68,23 +74,33 @@ export default {
         { label: 'About', path: '/about' },
         { label: 'Contact', path: '/contact' },
       ],
-    };
+    }
   },
   methods: {
     toggleMenu() {
-      this.isMenuOpen = !this.isMenuOpen;
+      this.isMenuOpen = !this.isMenuOpen
     },
   },
   watch: {
     // Close mobile menu when navigating to a new route
     $route() {
-      this.isMenuOpen = false;
+      this.isMenuOpen = false
     },
   },
-};
+}
 </script>
 
-<style>
+<style scoped>
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000; /* Ensure it's on top of other elements */
+  background-color: #333; /* Add a background color to avoid transparency issues */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional shadow for emphasis */
+}
+
 .slide-down-enter-active,
 .slide-down-leave-active {
   transition: max-height 0.3s ease;
