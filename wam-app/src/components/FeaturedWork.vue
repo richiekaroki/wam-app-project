@@ -16,28 +16,29 @@
 </template>
 
 <script>
+import work1 from '../assets/images/work-1.png';
+import work2 from '../assets/images/work-2.png';
+import work3 from '../assets/images/work-3.png';
+
 export default {
   name: 'FeaturedWork',
   data() {
     return {
       featuredWorks: [
-        {
-          title: 'Old Soul',
-          description: 'Interior Design & Consultation',
-          image: '/assets/old-soul.jpg',
-        },
-        {
-          title: 'Mastin Labs',
-          description: 'Photo Projects & Launch Lists',
-          image: '/assets/mastin-labs.jpg',
-        },
-        {
-          title: 'Boundless Bits',
-          description: 'SaaS Product Design',
-          image: '/assets/boundless-bits.jpg',
-        },
+        { title: 'Old Soul', description: 'Interior Design & Consultation', image: work1 },
+        { title: 'Mastin Labs', description: 'Photo Projects & Launch Lists', image: work2 },
+        { title: 'Boundless Bits', description: 'SaaS Product Design', image: work3 },
       ],
-    }
+    };
   },
-}
+};
 </script>
+
+<style scoped>
+.bg-light {
+  background-color: #f9fafb;
+}
+.text-dark {
+  color: #1f2937;
+}
+</style>
