@@ -83,7 +83,7 @@ export default {
   color: #777;
 }
 .btn-primary {
-  background-color: #ff5a5f;
+  background-color: #c2a666;
   color: #fff;
   padding: 0.5rem 1.5rem;
   border: none;
@@ -91,7 +91,7 @@ export default {
   transition: background-color 0.3s;
 }
 .btn-primary:hover {
-  background-color: #e14b4d;
+  background-color: #c2a666;
 }
 .service-card:hover {
   transform: scale(1.05);
@@ -101,7 +101,7 @@ export default {
   width: 50px;
   height: 50px;
   border: 5px solid #ccc;
-  border-top: 5px solid #ff5a5f;
+  border-top: 5px solid #c2a666;
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }
