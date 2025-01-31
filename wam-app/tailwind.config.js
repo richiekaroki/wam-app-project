@@ -12,7 +12,6 @@ export default {
       fontFamily: {
         sans: ['YourFontFamily', 'sans-serif'],
       },
-      // Add any other customizations here
     },
   },
   plugins: [],
