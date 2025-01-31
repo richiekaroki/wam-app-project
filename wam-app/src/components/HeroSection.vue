@@ -1,16 +1,19 @@
 <template>
   <section class="flex flex-col md:flex-row items-center py-16 bg-light">
-
     <!-- Left Side: CTA and Button -->
-    <div class="flex flex-col items-center text-center md:w-1/2 md:items-start md:text-left md:pr-8">
-      <h2 class="text-4xl font-semibold text-dark mb-4">
+    <div
+      class="flex flex-col items-center text-center md:w-1/2 md:items-start md:text-left md:pr-8"
+    >
+      <h2 class="text-4xl md:text-5xl font-semibold text-dark mb-4">
         Connecting brands with the people they love.
       </h2>
-      <p class="text-lg text-gray-600 mb-6">
+      <p class="text-lg md:text-xl text-gray-600 mb-6">
         Engaging, memorable, and impactful copywriting that drives conversions.
       </p>
       <router-link to="/services">
-        <button class="bg-accent text-white px-6 py-2 rounded-md hover:bg-opacity-90 transition duration-200">
+        <button
+          class="bg-accent text-white px-6 py-2 rounded-md hover:bg-opacity-90 transition duration-200"
+        >
           See Our Services
         </button>
       </router-link>
@@ -28,12 +31,14 @@
 </template>
 
 <script>
-export default {
+import { defineComponent } from 'vue'
+
+export default defineComponent({
   name: 'HeroSection',
-}
+})
 </script>
 
-<style>
+<style scoped>
 /* Optional: Add responsive styles */
 @media (max-width: 640px) {
   h2 {
