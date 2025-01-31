@@ -8,7 +8,9 @@
 
       <!-- Loading State -->
       <template v-if="loading">
-        <div class="spinner">Loading...</div>
+        <div class="spinner-container">
+          <div class="spinner">Loading...</div>
+        </div>
       </template>
 
       <!-- Services Grid -->
@@ -45,11 +47,11 @@ export default {
     return {
       loading: true,
       services: [],
-    };
+    }
   },
   mounted() {
     setTimeout(() => {
-      this.loading = false;
+      this.loading = false
       this.services = [
         {
           title: 'Consulting',
@@ -69,10 +71,10 @@ export default {
           icon: 'fa-solid fa-life-ring',
           link: '/services/support',
         },
-      ];
-    }, 2000);
+      ]
+    }, 2000)
   },
-};
+}
 </script>
 
 <style scoped>
@@ -88,14 +90,29 @@ export default {
   padding: 0.5rem 1.5rem;
   border: none;
   border-radius: 0.25rem;
-  transition: background-color 0.3s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition:
+    background-color 0.3s,
+    box-shadow 0.3s;
 }
 .btn-primary:hover {
-  background-color: #c2a666;
+  background-color: #a88a4d;
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+.service-card {
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 .service-card:hover {
   transform: scale(1.05);
-  transition: transform 0.3s ease;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
 }
 .spinner {
   width: 50px;
@@ -106,7 +123,11 @@ export default {
   animation: spin 1s linear infinite;
 }
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 </style>
