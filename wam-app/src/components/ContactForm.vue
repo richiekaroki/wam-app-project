@@ -11,7 +11,7 @@
           id="name"
           class="w-full px-4 py-2 border rounded-md"
           placeholder="Your Name"
-          :class="{'border-red-500': errors.name}"
+          :class="{ 'border-red-500': errors.name }"
         />
         <p v-if="errors.name" class="text-red-500 text-sm">{{ errors.name }}</p>
       </div>
@@ -25,7 +25,7 @@
           id="email"
           class="w-full px-4 py-2 border rounded-md"
           placeholder="Your Email"
-          :class="{'border-red-500': errors.email}"
+          :class="{ 'border-red-500': errors.email }"
         />
         <p v-if="errors.email" class="text-red-500 text-sm">{{ errors.email }}</p>
       </div>
@@ -40,6 +40,7 @@
           rows="4"
           placeholder="Your Message"
         ></textarea>
+        <p v-if="errors.message" class="text-red-500 text-sm">{{ errors.message }}</p>
       </div>
 
       <!-- Submit Button -->
@@ -51,6 +52,7 @@
         {{ isSubmitting ? 'Sending...' : 'Send Message' }}
       </button>
     </form>
+    <p v-if="successMessage" class="text-green-500 text-center mt-4">{{ successMessage }}</p>
   </section>
 </template>
 
@@ -66,46 +68,60 @@ export default {
       },
       errors: {},
       isSubmitting: false,
-    };
+      successMessage: '',
+    }
   },
   methods: {
     validateForm() {
-      const errors = {};
+      const errors = {}
 
       // Basic validation
-      if (!this.formData.name) errors.name = 'Name is required';
-      if (!this.formData.email) errors.email = 'Email is required';
-      else if (!/\S+@\S+\.\S+/.test(this.formData.email)) errors.email = 'Enter a valid email address';
-      if (!this.formData.message) errors.message = 'Message is required';
+      if (!this.formData.name) errors.name = 'Name is required'
+      if (!this.formData.email) errors.email = 'Email is required'
+      else if (!/\S+@\S+\.\S+/.test(this.formData.email))
+        errors.email = 'Enter a valid email address'
+      if (!this.formData.message) errors.message = 'Message is required'
 
-      this.errors = errors;
-      return Object.keys(errors).length === 0;
+      this.errors = errors
+      return Object.keys(errors).length === 0
     },
     async handleSubmit() {
-      if (!this.validateForm()) return;
+      if (!this.validateForm()) return
 
-      this.isSubmitting = true;
+      this.isSubmitting = true
+      this.successMessage = ''
 
-      // Simulate form submission (replace with actual submission logic)
-      setTimeout(() => {
-        alert('Message sent successfully!');
-        this.isSubmitting = false;
-        this.formData = { name: '', email: '', message: '' }; // Clear form
-      }, 2000);
+      try {
+        // Simulate form submission (replace with actual submission logic)
+        await new Promise((resolve) => setTimeout(resolve, 2000))
+        this.successMessage = 'Message sent successfully!'
+        this.formData = { name: '', email: '', message: '' } // Clear form
+      } catch (error) {
+        console.error('Form submission failed', error)
+      } finally {
+        this.isSubmitting = false
+      }
     },
   },
-};
+}
 </script>
 
 <style scoped>
 /* Focus input fields */
-input:focus, textarea:focus {
+input:focus,
+textarea:focus {
   outline: none;
   border-color: #ff5a5f;
 }
 
 /* Success/Error Styles */
-input.border-red-500, textarea.border-red-500 {
+input.border-red-500,
+textarea.border-red-500 {
   border-color: #f87171;
+}
+
+/* Success Message */
+.text-green-500 {
+  color: #10b981;
 }
 </style>
